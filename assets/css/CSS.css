@@ -1,0 +1,14 @@
+* {
+    background-color: antiquewhite;
+    margin: 100px;
+}
+
+h1 {
+    text-align: center;
+    color: rgb(184, 184, 184);
+}
+
+p {
+    text-transform: capitalize;
+    text-align: center;
+}
