@@ -1,6 +1,5 @@
 * {
     background-color: antiquewhite;
-    margin: 100px;
 }
 
 h1 {
@@ -11,4 +10,24 @@ h1 {
 p {
     text-transform: capitalize;
     text-align: center;
+}
+
+.navigation > * {
+    display: flex;
+    flex-flow: row wrap;
+    background: tomato;
+    width: 100%;
+}
+
+.navigation li{
+    margin: 10px;
+}
+
+.navigation ul{
+    list-style: none;
+    justify-content: space-around;
+}
+
+.navigation a{
+    text-decoration: none;
 }
