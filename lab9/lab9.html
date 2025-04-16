@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lab 9</title>
+    </head>
+
+    <body >
+        <button onclick ="mute()" type ="button">MUTE </button>
+        <script >
+            var context = new(window.AudioContext || window.webkitAudioContext)();
+
+            var gain = context.createGain();
+            gain.connect(context.destination);
+            gain.gain.setValueAtTime(0, context.currentTime);
+
+            var oscillator = context.createOscillator();
+            oscillator.type = 'sawtooth';
+            oscillator.frequency.value = 220;
+            oscillator.connect(gain);
+            //oscillator.start();
+
+            function mute(){
+                if(gain.gain.value == 0) {
+                    gain.gain.setValueAtTime (1, context.currentTime );
+                    
+                }
+                else { 
+                    gain.gain.setValueAtTime (0, context.currentTime )
+                    oscillator.start(); 
+                }
+            }
+        </script>
+    </body>
+        
+</html>
