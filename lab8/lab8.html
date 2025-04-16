@@ -27,6 +27,13 @@
         var username = getCookie("username");
         console.log("Username is:", username);
         document.body.innerHTML += `<h2>Welcome, ${username}!</h2>`;
+
+        //Local Storage 
+        localStorage.setItem ('name','simon');
+        var myname = localStorage.getItem ('name');
+        console.log(myname);
+
+
     </script>
 </body>
 </html>
