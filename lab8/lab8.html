@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<head>
+    <title>Lab 8</title>
+</head>
+<body>
+    <script>
+        // Ask for the user's name and set cookies
+        var name = window.prompt('What is your name?');
+        document.cookie = "username=" + name;
+        document.cookie = "password=secret; expires=Thu, 17 Apr 2025 12:00:00 UTC";
+
+        // Function to get a cookie by name
+        function getCookie(cookie_name) {
+            let name = cookie_name + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let cookieArray = decodedCookie.split(';');
+            for (let i = 0; i < cookieArray.length; i++) {
+                let c = cookieArray[i].trim(); // remove leading/trailing spaces
+                if (c.indexOf(name) === 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        // Get and show only the username
+        var username = getCookie("username");
+        console.log("Username is:", username);
+        document.body.innerHTML += `<h2>Welcome, ${username}!</h2>`;
+    </script>
+</body>
+</html>
