@@ -1,0 +1,38 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+#runner_game {
+    width: 500px;
+    height: 200px;
+    border: 1px solid black;
+    margin: auto;
+}
+
+#runner {
+    width: 20px;
+    height: 50px;
+    background-color: blue;
+    position: relative;
+    top: 150px;
+    left: 50px;
+    
+}
+
+#obstacle {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    position: relative;
+    top: 130px;
+    left: 480px;
+    /* animation: obstacle 2s linear infinite; */
+}
+
+/* @keyframes obstacle {
+    0% {left: 480px;}
+    100% {left: -40px;}
+    
+} */
+
