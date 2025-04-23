@@ -21,6 +21,7 @@ let runner = document.getElementById('runner');
 let jumping = false;
 
 document.addEventListener('keypress', chk_jump);
+document.addEventListener('touchstart', jump);
 
 function chk_jump(){
     if (!jumping){
