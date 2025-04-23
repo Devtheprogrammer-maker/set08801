@@ -27,12 +27,4 @@
     position: relative;
     top: 130px;
     left: 480px;
-    /* animation: obstacle 2s linear infinite; */
 }
-
-/* @keyframes obstacle {
-    0% {left: 480px;}
-    100% {left: -40px;}
-    
-} */
-
