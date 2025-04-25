@@ -130,7 +130,7 @@ function store_score(){
 
         if(score > stored_score){
             localStorage.setItem('High_Score', score);
-            //highest_score.innerHTML = score;
+            highest_score.innerHTML = score;
         }
     } else {
         highest_score.innerHTML = "Sorry, no Web storage support!";
