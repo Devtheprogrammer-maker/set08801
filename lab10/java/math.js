@@ -134,10 +134,8 @@ function chk_ans(correct_answer){
 
         display_eq();
     }else {
-        
+
         console.log('worng');
     }
 
 }
-
-
