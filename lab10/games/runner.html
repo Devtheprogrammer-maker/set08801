@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="../style/runnerstyle.css">
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 </head>
+
 <body>
     <header>
         <nav class = "nav_bar">
@@ -18,11 +18,13 @@
                 <li><a href="#">Hobbies</a></li>
                 <li><a href="#">Projects</a></li>
                 <li><a href="#">Contact Me</a></li>
+                <img src="" alt="">
             </ul>
         </nav>
     </header>
 
     <main>
+        <!-- Score section for current score and highest score  -->
         <section id = "score">
             <div>
                 <h1>Score: </h1>
@@ -31,27 +33,49 @@
 
             <div>
                 <h1>Highest Score:</h1>
-                <div id="stored_score">0</div>
-
+                <p id="stored_score">0</p>
             </div>
         </section>
 
+        <!-- Game's interface section -->
         <section id="runner_game">
-
+            <!-- Carrot -->
             <div id="runner"></div>
-                
+            
+            <!--Obstacles -->
             <div id="obstacle"></div>
-
         </section>
 
+        <!-- Options to start and mute game -->
         <section id = "options">
-
             <a href="#" onclick="start_game()"><i class="fa-solid fa-play"></i></a>
-            <a href="#" onclick="mute()"><i  id="mute_icon" class="fa-solid fa-volume-xmark"></i></a>
+            <a href="#" onclick="mute()"><i  id="mute_icon" class="fa-solid fa-volume-high"></i></a>
         </section>
 
-        <section>
-            <h1>Rules: </h1>
+        <!-- Games info section -->
+        <section id="rules">
+            <!-- Description section-->
+            <div>
+                <h1>Description: </h1>
+                <p>Help the carrot navigate through the kitchen and avoid obstacles being thrown its way!</p>
+            </div>
+
+            <!-- How to play the game section-->
+            <div>
+                <h1>How To Play: </h1>
+                <p>Press the Play button (next to the Mute option) located just below the game interface to start.</p>
+                <p><strong>Desktop: </strong>Press any key to jump.</p>
+                <p><strong>Moblie/Tablet: </strong>Tap anywhere on the screen to jump.</p>
+            </div>
+
+            
+            <div>
+                <h1>About Game:</h1>
+                <p><strong>Developer: </strong>Devin Vivas</p>
+                <p><strong>Released Date: </strong>May 2, 2025</p>
+                <p><strong>Technology Used: </strong>HTML5, CSS, JavaScript</p>
+                <p><strong>Platform: </strong>Web Browser</p>
+            </div>
         </section>
     </main>
 

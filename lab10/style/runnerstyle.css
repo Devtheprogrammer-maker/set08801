@@ -1,68 +1,220 @@
+/*Remove default browser default*/
 * {
     padding: 0;
     margin: 0;
 }
 
+
+/*Body format*/
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+
+/*Main format*/
 main {
-    background-color: #f5f6f8;
-    padding: 25px;
-}
-
-/* runner styling */
-#runner_game {
-    width: 500px;
-    height: 200px;
-    border: 1px solid black;
-    margin: auto;
-   
-}
-
-#runner {
-    width: 20px;
-    height: 50px;
-    background-color: blue;
-    position: relative;
-    top: 150px;
-    left: 50px;
-    
-}
-
-#obstacle {
-    width: 20px;
-    height: 20px;
-    background-color: black;
-    position: relative;
-    top: 130px;
-    left: 480px;
-}
-
-
-/* Game Options */
-#options{
-    width: 500px;
-    margin: auto;
-    background-color: tomato;
+    padding: 2rem;
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    flex-direction: column;
     align-items: center;
 }
 
 
+/*Running game interface*/
+#runner_game {
+    width: 100%;
+    max-width: 500px;
+    height: 40vw; 
+    max-height: 200px;
+    position: relative;
+    border-radius: 8px;
+    border: 5px solid #333;
+    background-image: url(../img/background.png);
+    background-size: cover;
+    overflow: hidden;
+}
 
 
-/* score styling */
+/*Carrot*/
+#runner {
+    width: 4%;
+    height: 25%;
+    background-image: url('../img/carrot.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+}
+
+
+/*Obstacle*/
+#obstacle {
+    width: 5%;
+    height: 15%;
+    background-image: url(../img/blender.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+
+/*Mute and play background section format*/
+#options {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 2rem;
+    background-color: #fff;
+    padding: 0.5rem;
+    border-radius: 8px;
+    box-shadow: 5px 10px 5px #888888;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/*Mute and play fomat*/
+#options a{
+    color: #555;
+    font-size: 1rem;
+}
+
+/*Hover effect for mute and play*/
+#options a:hover {
+    color: #007bff;
+}
+
+
+/*Score background section styling*/
 #score {
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    margin: 25px;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    background-color: #fff;
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    box-shadow: 5px 10px 18px #888888;
 }
 
-#score p {
-    color: brown; 
+/*Centers text*/
+#score div{
     text-align: center;
 }
+
+/*Formats h1 tag*/
+#score h1{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+/*Formats p tag*/
+#score p{
+    color: black; 
+    font-weight: bold;
+}
+
+
+/*Rules background format*/
+#rules {
+    margin-bottom: 2rem;
+    background-color: #fff;
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    box-shadow: 5px 10px 18px #888888;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/*Formats p tag*/
+#rules p{
+    font-weight: bold;
+}
+
+/*Formats h1 tag*/
+#rules h1 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+/*Formats div tag*/
+#rules div{
+    padding: 1.5rem 2rem;
+    flex: 1;
+    background-color: #f4f7f6;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    min-height: 200px;
+}
+
+/*Formats stong tag*/
+#rules strong{
+    color: #2c4d7a;
+    /*Possible other color = 007bff*/
+}
+
+/*Responsive adjustments*/
+
+/*Smaller tablets and larger phones.*/
+@media (max-width: 767px) {
+    #score {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #rules {
+        flex-direction: column; 
+        align-items: stretch;
+    }
+
+    #rules div {
+        min-height: auto; 
+        margin-bottom: 1rem; 
+        padding: 1rem; 
+    }
+
+    #rules h1 {
+        font-size: 1.3rem; 
+    }
+
+    #rules p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Smaller phones */
+@media (max-width: 480px) {
+    #runner {
+        width: 8%; 
+        height: 35%;
+    }
+
+    #obstacle {
+        width: 10%;
+        height: 20%;
+    }
+
+    #options a {
+        font-size: 1.2rem;
+        padding: 0.5rem;
+    }
+
+    #score h1 {
+        font-size: 1.2rem;
+    }
+
+    #score p {
+        font-size: 0.8rem;
+    }
+}
+
 
 
