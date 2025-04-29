@@ -6,19 +6,136 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    
     <link rel="stylesheet" href="../style/math.css">
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body>
-    <section id = "popup">
-        <p>Please enter the highest number you would like to use.</p>
-        <br>    
-        <input type="text" id="max_num" placeholder="eg. 10" />
-        <br>
-        <button onclick="hide_popup()">Ok</button>
-    </section>
-    
-    <section id="math_game">
+    <header>
+        <nav class = "nav_bar">
+            <ul>
+                <li><img src="" alt=""><a href="">Slogan</a></li>
+                <li><a href="#">About Me</a></li>
+                <li><a href="#">Hobbies</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Contact Me</a></li>
+                <img src="" alt="">
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id = "popup">
+            <p>Please enter the highest number you would like to use.</p>
+            <br>    
+            <input type="text" id="max_num" placeholder="eg. 10" />
+            <br>
+            <button onclick="hide_popup()">Ok</button>
+        </section>
+
+        <section id = "score">
+            <div>
+                <h1>Score: </h1>
+                <p>0</p>
+            </div>
+
+            <div>
+                <h1>Highest Score:</h1>
+                <p id="stored_score">0</p>
+            </div>
+        </section>
         
-    </section>
+        <section id="math_game">
+
+            <div id="monster">
+
+            </div>
+
+            <div id="monster_rocket">
+
+            </div>
+
+            <div id="rocket_left">
+
+            </div>
+
+            <div id="helicopter">
+
+            </div>
+
+            <div id="rocket_right">
+
+            </div>
+
+            <div id="my_health">
+                <p>5</p>
+            </div>
+
+            <div id="monster_health">
+                <p>Monster HP: <span id="monster_hp">5</span></p>
+            </div>
+        </section>
+
+        <div id="feedback">
+                
+        </div>
+
+        <section id="time">
+
+        </section>
+
+        <section id="equation">
+            
+
+        </section>
+
+        <!-- Inside your main section, maybe after the #equation section -->
+        <button id="play-again-btn" style="display: none;">Play Again</button>
+        <!-- Give your initial start button an ID too -->
+        <button id="start-game-button" onclick="initial_start_game()"><i class="fa-solid fa-play"></i></button>
+
+        <!-- Games info section -->
+        <section id="rules">
+            <!-- Description section-->
+            <div>
+                <h1>Description: </h1>
+                <p>Help the carrot navigate through the kitchen and avoid obstacles being thrown its way!</p>
+            </div>
+
+            <!-- How to play the game section-->
+            <div>
+                <h1>How To Play: </h1>
+                <p>Press the Play button (next to the Mute option) located just below the game interface to start.</p>
+                <p><strong>Desktop: </strong>Press any key to jump.</p>
+                <p><strong>Moblie/Tablet: </strong>Tap anywhere on the screen to jump.</p>
+            </div>
+
+            
+            <div>
+                <h1>About Game:</h1>
+                <p><strong>Developer: </strong>Devin Vivas</p>
+                <p><strong>Released Date: </strong>May 2, 2025</p>
+                <p><strong>Technology Used: </strong>HTML5, CSS, JavaScript</p>
+                <p><strong>Platform: </strong>Web Browser</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div>
+            <img src="" alt="">
+            <p>Text Here</p>
+        </div>
+
+        <div>
+            <p>Quick Links Here</p>
+
+        </div>
+
+        <div>
+            <p>Social Media Here</p>
+        </div>
+    </footer>    
 </body>
 <script src="../java/math.js"></script>
 </html>

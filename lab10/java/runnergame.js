@@ -7,6 +7,16 @@ let obstacleImages = ['../img/knife.png', '../img/blender.png'];
 let obstacle_interval, collision_interval, score_interval;
 
 
+//Stop the space bar from scrolling down
+function remove_default(event) {
+    if (event.code === 'Space') {
+        event.preventDefault();
+        check_jump();
+    }
+}
+
+document.addEventListener('keydown', remove_default);
+
 //Gets Element
 let obstacle = document.getElementById('obstacle');
 
