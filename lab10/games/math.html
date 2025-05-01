@@ -1,116 +1,115 @@
+<!-- HTML Heading -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Math Game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Tittle -->
+    <title>Math Game</title>
    
+    <!-- Loads stylesheets -->
     <link rel="stylesheet" href="../style/math.css">
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
-    <header>
-        <nav class = "nav_bar">
-            <ul>
-                <li><img src="" alt=""><a href="">Slogan</a></li>
-                <li><a href="#">About Me</a></li>
-                <li><a href="#">Hobbies</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Contact Me</a></li>
-                <img src="" alt="">
-            </ul>
-        </nav>
-    </header>
-
     <main>
+        <!-- Popup section  -->
         <section id = "popup">
-            <p>Please enter the highest number you would like to use.</p>
-            <br>    
+            <p>What is the highest number you'd like to use in the equations?</p>
+            <br>
+            <!-- Textbox to enter max value  -->
             <input type="text" id="max_num" placeholder="eg. 10" />
             <br>
+            <!-- Calls the hide_pop() function  -->
             <button onclick="hide_popup()">Ok</button>
         </section>
 
+        <!-- Score section -->
         <section id = "score">
             <div>
+                <!-- Shows the current score -->
                 <h1>Score: </h1>
                 <p>0</p>
             </div>
 
             <div>
+                <!-- Shows the highest score -->
                 <h1>Highest Score:</h1>
                 <p id="stored_score">0</p>
             </div>
         </section>
         
+        <!-- The math game section -->
         <section id="math_game">
-
+            <!-- Monsetr -->
             <div id="monster">
 
             </div>
 
-            <div id="monster_rocket">
-
-            </div>
-
+            <!-- Monster's rocket -->
             <div id="rocket_left">
 
             </div>
 
+            <!-- Helicopter -->
             <div id="helicopter">
 
             </div>
 
+            <!-- Helicopter's rocket -->
             <div id="rocket_right">
 
             </div>
 
-            <div id="my_health">
-                <p>5</p>
+            <!-- Users health -->
+            <div id="user_health" class="health_background">
+                <p>My HP: <span id="my_health" class="heart">5</span></p>
             </div>
 
-            <div id="monster_health">
-                <p>Monster HP: <span id="monster_hp">5</span></p>
+            <!-- Monster's health -->
+            <div id="monster_health" class="health_background">
+                <p>Monster HP: <span id="monster_hp" class="heart">5</span></p>
             </div>
         </section>
 
-        <div id="feedback">
-                
-        </div>
+        <!-- Feedback section -->
+        <section id="feedback">
 
+        </section>
+        
+        <!-- Timer -->
         <section id="time">
 
         </section>
-
+        
+        <!-- Math equation -->
         <section id="equation">
             
-
         </section>
 
-        <!-- Inside your main section, maybe after the #equation section -->
-        <button id="play-again-btn" style="display: none;">Play Again</button>
-        <!-- Give your initial start button an ID too -->
-        <button id="start-game-button" onclick="initial_start_game()"><i class="fa-solid fa-play"></i></button>
+        <!-- Play again button -->
+        <button id="play_again" onclick="play_again()"><i class="fa-solid fa-rotate-right"></i></button>
+        <!-- Play Button -->
+        <button id="start_game" onclick="initial_start_game()"><i class="fa-solid fa-play"></i></button>
 
         <!-- Games info section -->
         <section id="rules">
             <!-- Description section-->
             <div>
                 <h1>Description: </h1>
-                <p>Help the carrot navigate through the kitchen and avoid obstacles being thrown its way!</p>
+                <p>Help save the city from a malicious monster unleashing chaos! Use your basic math skills to aim rockets at the creature. Only you can stop it, save the city!</p>
             </div>
 
             <!-- How to play the game section-->
             <div>
                 <h1>How To Play: </h1>
-                <p>Press the Play button (next to the Mute option) located just below the game interface to start.</p>
-                <p><strong>Desktop: </strong>Press any key to jump.</p>
-                <p><strong>Moblie/Tablet: </strong>Tap anywhere on the screen to jump.</p>
+                <p>At the start, you'll be greeted with a screen asking for the highest number you'd like to use in the equations. Once you enter a number and <strong>click Play</strong>, an equation will be generated. Solve the equation within 10 seconds to launch a rocket at the monster. If you succeed, you strike the enemy! But if you fail the monster launches a rocket at you!</p>
             </div>
 
-            
+            <!-- About game section  -->
             <div>
                 <h1>About Game:</h1>
                 <p><strong>Developer: </strong>Devin Vivas</p>
@@ -120,22 +119,36 @@
             </div>
         </section>
     </main>
-
-    <footer>
-        <div>
-            <img src="" alt="">
-            <p>Text Here</p>
-        </div>
-
+    
+    <!-- Footer section -->
+    <footer class="flex">
+        <!-- Quick links to the website -->
         <div>
             <p>Quick Links Here</p>
+            <ul>
+                <li><a href="#about_me">About Me</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
 
         </div>
 
+        <!-- Social Media links -->
         <div>
-            <p>Social Media Here</p>
+            <p>Connect with me!</p>
+            <ul class="flex">
+                <li><a href="https://www.linkedin.com/in/devin-vivas" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
+                <li><a href="https://github.com/Devtheprogrammer-maker" target="_blank"><i class="fa-brands fa-github"></i></a></li>
+                
+            </ul>
         </div>
-    </footer>    
+    </footer>
+
+    <!-- Copyright section -->
+    <section id="copyright">
+        <p>&copy; 2025 Devin.tech. All rights reserved.</p>
+    </section>
+    <!-- Loads script -->
+    <script src="../java/math.js"></script>
 </body>
-<script src="../java/math.js"></script>
 </html>

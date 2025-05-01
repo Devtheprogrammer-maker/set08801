@@ -5,113 +5,138 @@ let time = 10;
 let health = 5;
 let eq, answer, num1, num2, operator, timer; 
 const operations = ['+', '-', '*', '/'];
-let hp = document.getElementById('my_health').getElementsByTagName('p')[0];
+let hp = document.getElementById('my_health');
 let helicopter_interval = null; 
 let monster_interval = null;
-let monster_health = 2; //Change to 10
+let monster_health = 2; //CHANGE THIS TO 5 AFTER RECORDING
+let is_gameover = false; 
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 //The popup works with enter
 function check_enter(event) {
+    //Checks if the key pressed is enter
     if (event.key === 'Enter') {
+        //Hides popup 
         hide_popup();
+        //Removes the event listner that calls this
         document.removeEventListener('keydown', check_enter); 
     }
 }
+//Adds event listner if a key is pressed to call the check_enter function
 document.addEventListener('keydown', check_enter);
 
 
-//Popup
+
+//Hides the popup
 function hide_popup(){
 
-    //Gets Max Vaule
+    //Gets the value the user inputted
     max = parseInt(document.getElementById('max_num').value);
-    console.log(max);
+    console.log('User max:' , max);
 
-    //Checks if it is a number and if it more that 1
+    //Checks if it is a number and if it is less that 1
     if (isNaN(max) || max < 1){
-
-        //Changes popup text value
+        //Prompts the user to input a valid number
         document.getElementsByTagName('p')[0].innerHTML = "Please enter a valid number";
     }
     else {
-
-        //Changes CSS styling for popup and math game section 
+        //Hides the popup and shows the game 
         document.getElementById('popup').style.display = 'none';
         document.getElementsByTagName('body')[0].style.visibility = 'visible';
-        
     }    
 }
 
 
-function start_game(){
 
+//Creates the equation, timer, and answer
+function start_game(){
+    //Generates the 2 numbers
     generate_num(max);
 
+    //Gets a random operator
     operator = random_operator(operations);
 
+    //Puts the equation together
     eq = form_equation(num1,num2,operator);
-    console.log(eq);
+    console.log('Equation:', eq);
 
+    //Calculates the actual answer inlucing /0
     let raw_answer = calculate_answer(num1, num2, operator);
 
+    //Checks if a division by zero occured
     if (raw_answer === null) {
         answer = 'undefined';
     } else {
+        //rounds off to the nearest whole number
         answer = Math.floor(raw_answer);
     }
     console.log(answer);
+
+    //Displays equation 
     display_eq(); 
+
+    //Creates tags for the time to show on screen
     display_initial_time();
+
+    //Sets timer to an interval
     timer = setInterval(calculate_time, 1000)
 
 }
 
-//document.addEventListener('keydown', start_game)
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//Generates Numbers
+
+//Generates the numbers
 function generate_num(num){
-
+    //Generates the fist number
     num1 = Math.floor(Math.random() * num);
-    console.log(num1);
+    console.log('Number 1: ', num1);
     
+    //Generates the second number
     num2 = Math.floor(Math.random()* num);
-    console.log(num2);  
+    console.log('Number 2: ', num2);  
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Genreates Random Operator
-function random_operator(operator_array){
 
+
+//Genreates the operator
+function random_operator(operator_array){
+    //Generates a number form the array length
     random = Math.floor(Math.random() * operator_array.length);
 
+    //Sellects the operator
     operator = operator_array[random];
-    console.log(operator);
+    console.log('Operator: ', operator);
     return operator;
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 //Formulates Equation
 function form_equation(num1, num2, operator){
-
+    //Concatenates the numbers and operator
     equation = num1 + ' ' + operator + ' ' + num2;
     return equation
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Calculate answer 
-function calculate_answer(num1, num2, operator) {
 
+
+//Calculates the answer 
+function calculate_answer(num1, num2, operator) {
+    //Checks which operator was generated
     switch (operator) {
+        //Adds
         case '+':
             return num1 + num2;
+        //Subtracts
         case '-':
             return num1 - num2;
+        //Multiplies
         case '*':
             return num1 * num2;
+        //Divides
         case '/':
+            //Checks if a number is being divided by zero
             if (num2 === 0 ){
                 ans = null;
             }else{
@@ -124,147 +149,197 @@ function calculate_answer(num1, num2, operator) {
 }
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Display equation
-function display_eq(){
 
+//Displays equation
+function display_eq(){
+    //Creates a container
     let container = document.createElement('div');
 
-    let h1 = document.createElement('h1');
-    h1.innerText = 'Please solve the following:';
+    //Creates a h3 tag
+    let h3 = document.createElement('h3');
+    //Mkaes the h3 tag have the following text
+    h3.innerText = 'Please solve the following:';
     
+    //Creates a p tag
     let para = document.createElement("p");
+    //Makes the p tag contain the equation
     para.innerText = eq + ' ' +  '=';
 
+    //Creates an input
     let input = document.createElement('input');
+    //Give it an id
     input.id = 'user_ans';
+    //Specifies the type
     input.type = 'text';
+    //Adds styling
     input.style.marginLeft = '10px';
+    //Placeholder
     input.placeholder = 'enter answer here';
 
+    //Creates a button 
     let btn = document.createElement('button');
+    //Button text
     btn.innerText = "Submit";
+    //When pressed it checks answer
     btn.onclick = function () {
         check_ans(answer);
     };
 
-    container.appendChild(h1)
+    //Everything is appended to the container 
+    container.appendChild(h3)
     container.appendChild(para);
     container.appendChild(input);
     container.appendChild(btn);
+    //They are centered 
     container.style.textAlign = 'center';
 
+    //Appends the container to the equation section
     document.getElementById('equation').appendChild(container);
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//Checks user answer
 function check_ans(correct_answer){
-
+    //Gets the user's answer
     user_ans = parseFloat(document.getElementById('user_ans').value);
-    console.log(user_ans);
+    console.log('User answer: ', user_ans);
 
+    //Gets element id
     let feedback = document.getElementById('feedback'); 
-    //feedback.innerHTML=''; 
+    //Creates a p tag
     let para = document.createElement('p');
     
-
+    //Checks if answer is correct and if the user still has time
     if (correct_answer === user_ans && time >= 0){
-
         console.log('correct');
 
+        //P tag contents 
         para.innerText = 'Good Job! Moving to next question.';
+        //p tag styling 
         para.style.color = 'green';
         para.style.textAlign = 'center';
+        //p tag is appended to feedback 
         feedback.appendChild(para);
+
+        //Stops the timer 
         clearInterval(timer);
 
-       
+        //Stops helicopter rocket 
         clearInterval(helicopter_interval);
         helicopter_interval = null;
-       
+        
+        //Moves helicopter rocket       
         helicopter_interval = setInterval(right_rocket, 20);
 
-       setTimeout(()=>{
+        //Delays the equation generation
+        setTimeout(()=>{
+            //Stops if game over is true
+            if (is_gameover) return;
+            //Clears previous equation
             document.getElementById('equation').innerHTML = '';
 
+            //Generates equation
             start_game();
 
+            //Calculates score
             calculate_score();
             console.log('score: ', score); 
 
+            //Sets time to 10
             time = 10;
         }, 1500)
 
+        //Delays clearing feedback
         setTimeout(()=> {
             feedback.innerHTML='';
         }, 2000)
 
-    } else if (isNaN(user_ans) && time >= 0){
+    } 
+    //If the users enetrs a non number value
+    else if (isNaN(user_ans) && time >= 0){
+            //Feedback text
             para.innerText = 'Please enter a number. Time is ticking!'
             para.style.color = 'red';
             para.style.textAlign = 'center';
             feedback.appendChild(para);
 
+            //Delays clearing feedback
             setTimeout(()=> {
                 feedback.innerHTML='';
             }, 2000)         
     }
+    //If answer is worng
     else {
+        //Feedback text
         para.innerText = 'Better luck next time! Moving to next question.';
         para.style.color = 'orange';
         para.style.textAlign = 'center';
         feedback.appendChild(para);
         console.log('worng');
-
-        health--;
-        hp.innerHTML = '';
-        hp.innerText = health;
         
-
+        //Stops timer
         clearInterval(timer);
 
-        if (health <= 0) {
-            game_over("You ran out of health!");
-            return; // IMPORTANT: Stop further execution (like timeout for next question)
-        }
+        //Changes the monster picture to one with a rocket
+        let new_pic = document.getElementById('monster');
+        new_pic.style.backgroundImage = 'url(../img/monster_rocket.png)';
 
+        //Stops monster's rocket
         clearInterval(monster_interval);
         monster_interval = null;
+        //Moves monsters rocket
         monster_interval = setInterval(left_rocket, 20);
-
+        
+        //Delays equation generation 
         setTimeout(()=>{
+            //Stops if game over is true
+            if (is_gameover) return;
+            //Clears previous equation 
             document.getElementById('equation').innerHTML = '';
 
+            //Sets back the monster to its original form             
+            new_pic.style.backgroundImage = 'url(../img/monster.png)';
+
+            //Generates equation
             start_game();
 
+            //sets time to zero
             time = 10;    
         }, 1500)
 
+        //Delays clearing feedback
         setTimeout(()=> {
             feedback.innerHTML='';
         }, 2000)
     }
-
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//Claculates score
 function calculate_score(){
-    //Variable
+    //Increases score
     score ++;
+
     //Gets the first p tag of score
     p = document.getElementById('score').getElementsByTagName('p')[0];
-
+    //sets the p tag to the score count 
     p.innerHTML = score;
 
+    //Stores the score
     score_stored();
 }
 
-//Add local storage logic here
+
+
+//Stores score 
 function score_stored(){
+    //Gets id
     const stored = document.getElementById('stored_score');
 
+    //Checks is local storage is supported and stores the score
     if (typeof(Storage) !== "undefined") {
-
         //Gets the current highest score if stored
         let saved_score = localStorage.getItem('highest');
 
@@ -277,7 +352,9 @@ function score_stored(){
 
         //Stores and prints score
         if(score > saved_score){
+            //Saves score
             localStorage.setItem('highest', score);
+            //Prints score
             stored.innerHTML = score;
         }
     } else {
@@ -287,279 +364,325 @@ function score_stored(){
 
 //Function to load the score
 function load_score() {
-    //Gets element
+    //Gets stored score
     const high_score = localStorage.getItem('highest');
+
+    //Prints score
     if (high_score !== null) {
         document.getElementById('stored_score').innerHTML = high_score;
     }
 }
 
-// Call load_high_score() function when game loads
+//Call load_high_score() function when game loads
 load_score();
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//Decrements timer
 function calculate_time() {
+    //Decrements time
     time --; 
+
+    //Gets id 
     let time_div = document.getElementById('time');
+    //Clears previous time 
     time_div.innerHTML = '';
 
-
+    //Creates div
     let container = document.createElement('div');
 
-    let h1 = document.createElement('h1');
-    h1.innerText = 'Time: ';
+    //Creates h3 with text
+    let h3 = document.createElement('h3');
+    h3.innerText = 'Time: ';
     
+    //Creates p with the time
     let para = document.createElement("p");
     para.innerText = time;
 
-    container.appendChild(h1)
+    //Appends everthing to the container and adds style
+    container.appendChild(h3)
     container.appendChild(para);
     container.style.textAlign = 'center';
     container.style.marginBottom = '1rem';
 
+    //Appends container to the div
     time_div.append(container);
 
+    //Checks if user does not have time
     if (time <= 0){
-        clearInterval(timer);
-        console.log('times up')
+        //Gets element id
+        let feedback = document.getElementById('feedback'); 
+        //Creates a p tag
+        let para = document.createElement('p');
 
-        // Show feedback
-        const feedback = document.getElementById('feedback');
-        feedback.innerHTML = '';
-        const para = document.createElement('p');
-        para.innerText = 'Time\'s up! Moving to next question.';
-        para.style.color = 'red';
+        //Feedback text
+        para.innerText = 'Time is up! Moving to next question.';
+        para.style.color = 'orange';
         para.style.textAlign = 'center';
         feedback.appendChild(para);
+        console.log('worng');
+        
+        //Stops timer
+        clearInterval(timer);
 
-        health--;
-        hp.innerHTML = '';
-        hp.innerText = health;
+        //Changes the monster picture to one with a rocket
+        let new_pic = document.getElementById('monster');
+        new_pic.style.backgroundImage = 'url(../img/monster_rocket.png)';
 
+        //Stops monster's rocket
         clearInterval(monster_interval);
         monster_interval = null;
+        //Moves monsters rocket
         monster_interval = setInterval(left_rocket, 20);
-
-        if (health <= 0) {
-            alert("You ran out of health!"); // Example game over call
-            game_over();
-            return; // Stop further execution if game is over
-       }
         
-
-        // Move to next question after delay
-        setTimeout(() => {
-            generate_num(max);
-            operator = random_operator(operations);
-            eq = form_equation(num1, num2, operator);
-
-            let raw_answer = calculate_answer(num1, num2, operator);
-            if (raw_answer === null) {
-                answer = 'undefined';
-            } else {
-                answer = Math.floor(raw_answer);
-            }
-
+        //Delays equation generation 
+        setTimeout(()=>{
+            //Stops if game over is true
+            if (is_gameover) return;
+            //Clears previous equation 
             document.getElementById('equation').innerHTML = '';
-            time = 10;
-            display_eq();
-            display_initial_time();
-            timer = setInterval(calculate_time, 1000);
-            feedback.innerHTML = '';
-        }, 2000);
+
+            //Sets back the monster to its original form             
+            new_pic.style.backgroundImage = 'url(../img/monster.png)';
+
+            //Generates equation
+            start_game();
+
+            //sets time to zero
+            time = 10;    
+        }, 1500)
+
+        //Delays clearing feedback
+        setTimeout(()=> {
+            feedback.innerHTML='';
+        }, 2000)
     }
 }
 
-
+//Print time
 function display_initial_time(){
+    //Gets div
     let time_div = document.getElementById('time');
+    //Clears previous time 
     time_div.innerHTML = '';
 
+    //Creates div
     let container = document.createElement('div');
-    let h1 = document.createElement('h1');
-    h1.innerText = 'Time: ';
+    //Creates h3 tag
+    let h3 = document.createElement('h3');
+    //Adds text
+    h3.innerText = 'Time: ';
 
+    //Creates p 
     let para = document.createElement("p");
+    //Sets p to the time 
     para.innerText = time;
 
-    container.appendChild(h1);
+    //Appends everything to the div 
+    container.appendChild(h3);
     container.appendChild(para);
+    //Adds styling 
     container.style.textAlign = 'center';
     container.style.marginBottom = '1rem'
 
+    //Appends div to time
     time_div.append(container);
 }
-//////////////////////////////////////////////////////////////////////
+
+
+
 //Monster's Rocket
 function left_rocket(){
-    
+    //Gets respective dimentions
     let left = document.getElementById('rocket_left');
     let left_style = window.getComputedStyle(left);
     let rocket_right = parseInt(left_style.getPropertyValue('right'));
     let left_width = monster.getBoundingClientRect().width;
-
     let game_width = document.getElementById('math_game').getBoundingClientRect().width;
+    //Make rocket visible
+    left.style.visibility = 'visible';
 
-    
+    //Checks if the rockect reached the right
     if (rocket_right + left_width <= game_width){
+        //Moves rocket
         left.style.right = (rocket_right + 5) + 'px';
+        //Checks for collision
         heli_collission();
     }
     else{
-        left.style.right = '0px';
-        clearInterval(monster_interval); // Stop THIS rocket's movement
-        monster_interval = null;        
+        //Rests rocket to original position
+        left.style.right = '-35px';
+        //Stops rocket
+        clearInterval(monster_interval);
+        monster_interval = null;
+        //Hides rocket        
+        left.style.visibility = 'hidden';
     }
 }
 
-//setInterval(left_rocket, 20);
-
-
-
 //Helicopter's rocket
 function right_rocket(){
+    //Gets respective dimentions
     let right = document.getElementById('rocket_right');
     let rocket_style = window.getComputedStyle(right);
     let rocket_left = parseInt(rocket_style.getPropertyValue('left'));
     let rocket_width = right.getBoundingClientRect().width;
-
     let game_width = document.getElementById('math_game').getBoundingClientRect().width;
+    //Shows rocket
+    right.style.visibility = 'visible';
 
+    //Checks if rocket reached the left
     if (rocket_width + rocket_left <= game_width){
+        //Moves rocket
         right.style.left = (rocket_left + 5) + 'px';
+        //Checks for collision
         rocket_collision();
     }
     else{
-        right.style.left = '0px';
-        clearInterval(helicopter_interval); // Stop THIS rocket's movement
+        //Rests rocket to original position
+        right.style.left = '-30px';
+        //Stops rocket
+        clearInterval(helicopter_interval);
         helicopter_interval = null;
     }
 }
 
-//setInterval(right_rocket, 20);
 
 
-
+//Checks collision
 function rocket_collision() { 
-    //Gets the positions 
+    //Gets the ids 
     let heli_rocket_element = document.getElementById('rocket_right');
     let monster_element = document.getElementById('monster');
 
+    //Gets the positions
     let heli_rocket = heli_rocket_element.getBoundingClientRect();
     let mon = monster_element.getBoundingClientRect();
 
 
-    //Checks if the carrot and obstacle overlap
-    if (
-        heli_rocket.left < mon.right &&
-        heli_rocket.right > mon.left &&
-        heli_rocket.top < mon.bottom &&
-        heli_rocket.bottom > mon.top
-    ) {
+    //Checks for overlap
+    if (heli_rocket.left < mon.right && heli_rocket.right > mon.left && heli_rocket.top < mon.bottom && heli_rocket.bottom > mon.top) {
+        //Stops rocket
         clearInterval(helicopter_interval);
         helicopter_interval = null;
-        //et helicopter = document.getElementById('helicopter');
-        heli_rocket_element.style.left = '0px';
+        
+        //Rests rocket position
+        heli_rocket_element.style.left = '-30px';
         alert('Collision Detected! Monster Hit!');
 
+        //Reduces monsters health
         monster_health --; 
+        //Gets id
         let monster_display = document.getElementById('monster_hp');
+        //Updates health
         monster_display.innerText = monster_health;
 
+        //Hides rocket
+        heli_rocket_element.style.visibility = 'hidden'
+
+        //Check is monster still has health
         if (monster_health <= 0){
             game_over('You defeated the monster!');
         }
-        
-
-
-
     }
 }
 
+//Checks for collisions
 function heli_collission(){
+    //Gets ids
     let monster_rocket_element = document.getElementById('rocket_left');
     let heli_element = document.getElementById('helicopter');
 
+    //Gets the positions
     let monster_rocket = monster_rocket_element.getBoundingClientRect();
     let heli = heli_element.getBoundingClientRect();
 
-    if (
-        monster_rocket.left < heli.right &&
-        monster_rocket.right > heli.left &&
-        monster_rocket.top < heli.bottom &&
-        monster_rocket.bottom > heli.top
-    ) {
+    //Checks for overlap
+    if (monster_rocket.left < heli.right && monster_rocket.right > heli.left && monster_rocket.top < heli.bottom && monster_rocket.bottom > heli.top) {
+        //Stops rocket
         clearInterval(monster_interval);
         monster_interval = null;
-        //let helicopter = document.getElementById('helicopter');
-        monster_rocket_element.style.right = '0px';
+
+        alert('Ouch! Helicopter hit!');
+        //Reduces user health and updates it
+        health--;
+        hp.innerHTML = '';
+        hp.innerText = health;
+        
+        //Resets rocket position
+        monster_rocket_element.style.right = '-35px';
+
+        //Hides rocket
+        monster_rocket_element.style.visibility = 'hidden';
+
+        //CHekcs if the user still has health
         if (health <= 0) {
             game_over("Your helicopter was destroyed!");
-            // The game_over function already stops all intervals.
-        } else {
-            // Optional: Give feedback without ending game
-             alert('Ouch! Helicopter hit!'); // Simple feedback
-             // You could add a visual effect like flashing the helicopter here
         }
     }
 }
 
 
+
+
+//Stops game
 function game_over(){
+    //sets game over to true
+    is_gameover = true;
+    //Stops all intervals
     clearInterval(helicopter_interval);
     clearInterval(monster_interval);
     clearInterval(timer);
 
+    //Resets these variables
     timer = null; 
     helicopter_interval = null; 
     monster_interval = null; 
     alert('Game Over!');
 
+    //Clears these sections
     document.getElementById('equation').innerHTML = '';
     document.getElementById('time').innerHTML = '';
     document.getElementById('feedback').innerHTML = '';
 
-    let heliRocket = document.getElementById('rocket_right');
-    let monsterRocket = document.getElementById('rocket_left');
-    if (heliRocket) heliRocket.style.left = '0px'; // Or starting position
-    if (monsterRocket) monsterRocket.style.right = '0px'; // Or starting position
 
+    //Resets rocket to original positions
+    let heli_Rocket = document.getElementById('rocket_right');
+    let monster_Rocket = document.getElementById('rocket_left');
+    heli_Rocket.style.left = '-30px'; 
+    monster_Rocket.style.right = '-35px'; 
+
+    //Updates variables to original values
     score = 0; 
     health = 5; 
     time = 10; 
 
+    //Updates 
     document.getElementById('score').getElementsByTagName('p')[0].innerText = score;
-    hp.innerText = health; // 'hp' already references the health paragraph
+    hp.innerText = health;
 
-    let playAgainButton = document.getElementById('play-again-btn');
-    if (playAgainButton) {
-        playAgainButton.style.display = 'block'; // Make it visible
-    }
-     // Maybe hide the initial start button if it exists?
-     let startButton = document.getElementById('start-game-button'); // Give your start button an ID
-     if (startButton) {
-         startButton.style.display = 'none';
-     }
-
-      // 7. Prepare for restart
-    let playAgainBtn = document.getElementById('play-again-btn'); // Use local var
-    if (playAgainBtn) {
-        playAgainBtn.style.display = 'block'; // Show the button
-    }
-     let startBtn = document.getElementById('start-game-button'); // Use local var
-     if (startBtn) {
-         startBtn.style.display = 'none'; // Keep initial start hidden
-     }
+    //Play again button is visible
+    let play_again = document.getElementById('play_again');
+    play_again.style.display = 'block';
+    
+    //Hides play button
+    let startButton = document.getElementById('start_game'); 
+    startButton.style.display = 'none';
 }
 
+//Variables
+const start_button_btn = document.getElementById('start_game');
+const play_again_btn = document.getElementById('play_again');
 
-const startButton = document.getElementById('start-game-button');
-const playAgainButton = document.getElementById('play-again-btn');
-
-// Function for the INITIAL start button click
+//Function for the initial start button click
 function initial_start_game() {
-    startButton.style.display = 'none'; // Hide initial start button
-    playAgainButton.style.display = 'none'; // Ensure play again is hidden
-    // Reset state JUST IN CASE before first game (optional but safe)
+    //Make game over false
+    is_gameover = false;
+    //hides buttons
+    start_button_btn.style.display = 'none';
+    play_again_btn.style.display = 'none';
+
+    //Resets the statses
     score = 0;
     health = 5;
     time = 10;
@@ -573,26 +696,27 @@ function initial_start_game() {
     document.getElementById('time').innerHTML = '';
     document.getElementById('feedback').innerHTML = '';
 
-    // Reset rocket positions visually (optional but good practice)
-    let heliRocket = document.getElementById('rocket_right');
-    let monsterRocket = document.getElementById('rocket_left');
-    if (heliRocket) heliRocket.style.left = '0px';
-    if (monsterRocket) monsterRocket.style.right = '0px';
 
-    // Call the actual game logic start
+    let heli_Rocket = document.getElementById('rocket_right');
+    let monster_Rocket = document.getElementById('rocket_left');
+    heli_Rocket.style.left = '-30px';
+    monster_Rocket.style.right = '-35px';
+
+    //Calls the actual game logic start
     start_game();
 }
 
-
-// Add event listener for the "Play Again" button
-
-playAgainButton.addEventListener('click', () => {
+//Function to play again
+function play_again(){
     console.log("Play Again clicked");
-    playAgainButton.style.display = 'none'; // Hide itself
-    // Ensure game state is reset (game_over should have done this, but belt-and-suspenders)
+    //Makes game over false 
+    is_gameover = false;
+    //Hide
+    play_again_btn.style.display = 'none';
+    // Rests
     score = 0;
     health = 5;
-    monster_health = 2; //chnage this to 10
+    monster_health = 2; //CHANGE THIS TO 5 AFTER RECORDING
     time = 10;
     document.getElementById('score').getElementsByTagName('p')[0].innerText = score;
     hp.innerText = health;
@@ -601,8 +725,9 @@ playAgainButton.addEventListener('click', () => {
     let monster_display = document.getElementById('monster_hp');
     monster_display.innerText = monster_health;
 
-    load_score(); // Reload high score display
+    //Reload high score display
+    load_score(); 
 
-    // Start a new game sequence
+    //Start a new game
     start_game();
-});
+}

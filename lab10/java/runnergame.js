@@ -3,7 +3,7 @@ let score = 0;
 let speed = 30;
 let High_Score = 0;
 let sound = true;
-let obstacleImages = ['../img/knife.png', '../img/blender.png'];
+let obastacle_images = ['../img/knife.png', '../img/blender.png'];
 let obstacle_interval, collision_interval, score_interval;
 
 
@@ -15,7 +15,10 @@ function remove_default(event) {
     }
 }
 
+//Checks if the spacebar is pressed to prvent it from going down
 document.addEventListener('keydown', remove_default);
+
+
 
 //Gets Element
 let obstacle = document.getElementById('obstacle');
@@ -44,11 +47,13 @@ function move_obstacle(){
 }
 
 
+
 //Getts a random image index
 function random_image() {
-    const randomIndex = Math.floor(Math.random() * obstacleImages.length);
-    return obstacleImages[randomIndex];
+    const random_index = Math.floor(Math.random() * obastacle_images.length);
+    return obastacle_images[random_index];
 }
+
 
 
 //Gets element 
@@ -56,7 +61,7 @@ let runner = document.getElementById('runner');
 let jumping = false;
 
 //If sreen is tapped or key is pressed then jump
-document.addEventListener('keypress', check_jump);
+//document.addEventListener('keypress', check_jump);
 document.addEventListener('touchstart', check_jump); 
 
 //Checks if the carrot is jumping and plays a note if true
@@ -118,6 +123,7 @@ function jump(){
 }
 
 
+
 //Sound for the jump
 function music(){
 
@@ -142,6 +148,7 @@ function music(){
 }
 
 
+
 //Function fot collision
 function check_collision() { 
     //Gets the positions
@@ -149,12 +156,7 @@ function check_collision() {
     let obstacl_rect = obstacle.getBoundingClientRect();
 
     //Checks if the carrot and obstacle overlap
-    if (
-        runner_rect.left < obstacl_rect.right &&
-        runner_rect.right > obstacl_rect.left &&
-        runner_rect.top < obstacl_rect.bottom &&
-        runner_rect.bottom > obstacl_rect.top
-    ) {
+    if (runner_rect.left < obstacl_rect.right && runner_rect.right > obstacl_rect.left && runner_rect.top < obstacl_rect.bottom && runner_rect.bottom > obstacl_rect.top) {
         store_score();
         alert('Collision Detected! Your Score was: ' + score);
         let div_width = document.getElementById('runner_game').getBoundingClientRect();
@@ -201,7 +203,9 @@ function calculate_score(){
     p.innerHTML = score;
 }
 
-//Music for Endgame
+
+
+//Music for every goal
 function finish(){
     //Creates an audio context
     var audio = new (window.AudioContext || window.webkitAudioContext)();
@@ -287,6 +291,7 @@ function finish(){
 }
 
 
+
 //Function to store score
 function store_score(){
     //Gets element
@@ -315,7 +320,6 @@ function store_score(){
     }
 }
 
-
 //Function to load the score
 function load_high_score() {
     //Gets element
@@ -329,8 +333,13 @@ function load_high_score() {
 load_high_score();
 
 
+
 //Stops all intervals; stopping the game
 function stop_game(){
+    //Changes icon to playagian
+    play_again_option = document.getElementById('options').getElementsByTagName('i')[0];
+    play_again_option.className = 'fa-solid fa-rotate-right';
+
     clearInterval(obstacle_interval);
     clearInterval(collision_interval);
     clearInterval(score_interval);
@@ -338,10 +347,6 @@ function stop_game(){
 
 
 function start_game(){
-    // clearInterval(obstacle_interval);
-    // clearInterval(collision_interval);
-    // clearInterval(score_interval);
-
     //Calls the stop_game() function
     stop_game();
 
@@ -350,6 +355,7 @@ function start_game(){
     collision_interval = setInterval(check_collision, speed);
     score_interval = setInterval(calculate_score, speed);
 }
+
 
 
 //Function to change mute icon

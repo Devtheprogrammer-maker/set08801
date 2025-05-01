@@ -1,167 +1,284 @@
+/* Removes browser defaults */
 *{
     margin: 0;
     padding: 0;
 }
 
+/* Styles the body */
 body {
-    visibility: hidden;
+    /* Hides it so that only the popup is visible */
+    visibility: hidden; 
+     /* Sets the font, color, line spacing and background  */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f4f7f6;
     color: #333;
-    line-height: 1.6;
+    line-height: 1.6;    
 }
 
+/* Centers the main contents */
 main {
     padding: 2rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    align-items: center;    
 }
 
+/* Styles the popup */
 #popup {
+    /* Centers contents */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    /* Does not move */
     position: fixed;
+    /* Centers actual popup */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 2rem;
+    /* Basic styling */
+    padding: 1.5rem;
     border-radius: 8px;
     background-color: #fff;
-    box-shadow:  5px 10px 18px #888888;
+    box-shadow:  5px 10px 18px #888888; 
+    width: 90%; 
+    max-width: 350px; 
+    text-align: center;
+    /* Prepares it to get hidden */
     visibility: visible;
+    /* Puts the popup above other elements */
+    z-index: 100;
 }
 
-#popup button{
-    padding: 0.25rem;
+/* Adds space below the buttons */
+button#play_again,
+button#start_game {
+    margin-bottom: 1rem;
+}
+
+/* Styles the math game section */
+#math_game {
+    width: 100%; 
+    max-width: 600px; 
+    height: 15vw;
+    min-height: 150px;
+    max-height: 300px;
+    position: relative;
     border-radius: 8px;
-    background-color: #f4f7f6;
+    border: 5px solid #333;
+    background-size: cover;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    background-image: url('../img/cityBackground.jpg');
+    background-position: center;
 }
 
-#popup button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-    cursor: pointer;
+/* Basic styling for the monster */
+#monster{
+    height: 40%; 
+    width: 20%;
+    min-height: 75px;
+    min-width: 50px;
+    background-image: url('../img/monster.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 0;
+    /* Had to move it due to the contain value */
+    right: -60px;
+    z-index: 3;
+    /* border: 2px solid red; */
 }
 
-#my_health{
+/* Basic styling for the rocket */
+#rocket_left{
+    height: 15%;
+    width: 15%;
+    min-width: 25px;
+    min-height: 25px;
+    background-image: url('../img/rocket_left.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 20%;
+    /* Had to move it due to the contain value */
+    right: -35px;
+    z-index: 1;
+    visibility: hidden;
+    /* border: 2px solid red; */
+}
+
+/* Basic helicopter styling */
+#helicopter {
+    height: 20%; 
+    width: 20%; 
+    min-width: 40px; 
+    min-height: 40px;
+    background-image: url('../img/helicopter.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    position: absolute;
+    bottom: 25%;
+    /* Had to move it due to the contain value */
+    left: -75px;
+    z-index: 3;
+    /* border: 2px solid red; */
+}
+
+/* Basic rocket styling */
+#rocket_right {
+    height: 10%; 
+    width: 10%; 
+    min-width: 20px; 
+    min-height: 20px;
+    background-image: url('../img/rocket_right.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    position: absolute;
+    visibility: hidden;
+    bottom: 30%;
+    /* Had to move it due to the contain value */
+    left: -30px;
+    z-index: 1;
+    /* border: 2px solid red; */
+}
+
+/* Positions the user health section */
+#user_health{
+    position: absolute;
+    top: 10px;
+    left: 10px;    
+}
+
+/* Positions the monster health section */
+#monster_health{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+/* Styles the heart and its text */
+.heart{
+    display: inline-block;
     height: 25px; 
     width: 25px;
     background-image: url('../img/heart.png');
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 3;
     text-align: center;
     font-size: small;
     font-weight: bold;
     color: #333;
 }
 
-#math_game {
-    width: 100%; 
-    max-width: 500px;
-    height: 15vw;
-    max-height: 350px;
-    position: relative;
-    border-radius: 8px;
-    border: 5px solid #333;
-    background-size: cover;
-    overflow: hidden;
-    margin-bottom: 2rem;
-    background-image: url('../img/cityBackground.jpg');
-}
-
-#monster{
-    height: 150px; 
-    width: 100px;
-    background-image: url('../img/monster.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    z-index: 3;
-}
-
-
-#rocket_left{
-    height: 50px;
-    width: 50px;
-    background-image: url('../img/rocket_left.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: absolute;
-    bottom: 25%;
-    right: 0;
-    z-index: 1;
-}
-
-#helicopter {
-    height: 50px;
-    width: 50px;
-    background-image: url('../img/helicopter.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: absolute;
-    bottom: 25%;
-    left: 0;
-    z-index: 3;
-}
-
-#rocket_right {
-    height: 25px;
-    width: 25px;
-    background-image: url('../img/rocket_right.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: absolute;
-    bottom: 30%;
-    left: 0;
-    z-index: 1;
-}
-
-
-input {
-    border-radius: 8px;
-    padding: 0.5rem;
-}
-
-input button {
-    border-radius: 8px;
-    padding: 0.5rem;
-    background-color: #333;
-}
-
-#monster_health {
-    position: absolute;
-    top: 5px; /* Adjust as needed */
-    right: 5px; /* Adjust as needed */
-    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+/* Styles the background that houses the heart and the hp */
+.health_background {
+    background-color: rgba(0, 0, 0, 0.6); 
     color: white;
     padding: 3px 8px;
     border-radius: 4px;
     font-size: 0.9em;
     font-weight: bold;
-    z-index: 4; /* Ensure it's visible */
+    z-index: 4;
 }
 
-
-
-
-#equation {
-    margin-bottom: 2rem;
+/* Styles the container of the respective id's */
+#feedback, #time, #equation {
+    width: 100%;
+    max-width: 400px; 
+    margin-bottom: 1.5rem;
+    padding: 1rem;
     background-color: #fff;
-    box-shadow: 5px 10px 5px #888888;
-    padding: 1.5rem 2rem;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
     border-radius: 8px;
+    text-align: center;
+    box-shadow: 5px 10px 5px #888888;
 }
 
-#equation p{
-    font-weight: bold;
+/* Adds some spacing */
+#time h1, #time p, #feedback p {
+    margin-bottom: 0.5rem; 
+}
+
+/* Styles the input elements */
+input{
+    border-radius: 5px;
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    margin: 0 0.5rem;
+    max-width: 150px; 
     text-align: center;
 }
 
+/* Adds space */
+#equation p{
+    margin-bottom: 0.5rem;
+}
+
+/* The button is not visible */
+#play_again{
+    display: none;
+}
+
+/* For smaller tablets and larger phones.*/
+@media (max-width: 767px) {
+    /* Makes each section streth and be horizontally placed */
+    #score {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    /* Makes each section streth and be horizontally placed */
+    #rules {
+        flex-direction: column; 
+        align-items: stretch;
+    }
+
+    /* Chnages size */
+    #rules h1 {
+        font-size: 1.3rem; 
+    }
+
+    /* Chnages size */
+    #rules p {
+        font-size: 0.9rem;
+    }
+
+    /* Reduces width constraints */
+    #feedback, #time, #equation{
+        max-width: 355px;
+    }
+
+    /* Changes position */
+    #helicopter{
+        bottom: 0;
+        left: 0;
+    }
+
+    /* Changes position */
+    #monster{
+        bottom: 0;
+        right: 0;
+    }
+}
+
+/* For phones */
+ @media (max-width: 480px) {
+    /* Reduces max width */
+     #math_game{
+        max-width: 400px;
+    }
+
+    /* Sets size */
+    #score h1 {
+        font-size: 1.2rem;
+    }
+
+    /* Sets size */
+    #score p {
+        font-size: 0.8rem;
+    }
+}

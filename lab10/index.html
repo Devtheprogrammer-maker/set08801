@@ -5,42 +5,122 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
+    <!-- Header section -->
     <header>
-        <nav class = "nav_bar">
+        <!-- Navigation Section -->
+        <nav>
             <ul>
-                <li><img src="" alt=""><a href="">Slogan</a></li>
-                <li><a href="#">About Me</a></li>
-                <li><a href="#">Hobbies</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Contact Me</a></li>
+                <!-- Hyperlinks to differnt sections -->
+                <li><a href="#"><i class="fa-solid fa-code"></i>Devin.tech</a></li>
+                <li><a href="#about_me"><i class="fa-solid fa-circle-info"></i></i>About Me</a></li>
+                <li><a href="#projects"><i class="fa-solid fa-gamepad"></i>Projects</a></li>
+                <li><a href="#contact"><i class="fa-solid fa-phone"></i>Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <main class = "primary">
-        <div>
-            <a href="games/runner.html" target="_blank">Runner Game</a>
-        </div>
-        
-        <a href="games/math.html" target="_blank">Math Game</a>
-    </main>
-    
-    <footer>
-        <div>
-            <img src="" alt="">
-            <p>Text Here</p>
-        </div>
+    <main>
+        <section id="welcome">
+            <div>Welcome message</div>
+            <div>Image?</div>
+        </section>
 
+        <section id="about_me">
+            <h1>About Me</h1>
+            <div class="rectangle"></div>
+            <div class="flex">
+                <div class="box"> 
+                    <h2>Hello, my name is Devin!</h2> 
+                    <p>Over a year ago, I graduated as the salutatorian of the Class of 2024 at Corozal Junior College. I am currently pursuing a Computing degree at Edinburgh Napier University. Beyond academics, I aspire to one day obtain a pilot's license and possibly work for a commercial airline. I am 19 years old and hope to eventually earn a PhD in cybersecurity.</p>
+                </div>
+        
+                <div class="round_img">
+                    <img src="img/mypic.png" alt="My photo">
+                </div>
+        
+                <div class="box"> 
+                    <h2>Some of my hobbies:</h2> 
+                    <ul class="hobby_list">      
+                        <li><i class="fa-solid fa-person-biking"></i> Cycling</li>
+                        <li><i class="fa-solid fa-seedling"></i> Gardening</li>
+                        <li><i class="fa-solid fa-person-swimming"></i> Swimming</li>
+                        <li><i class="fa-solid fa-dumbbell"></i> Recently Power lifting</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h1>Check Out My Recent Projects!</h1>
+            <div class="rectangle"></div>
+            <div class="flex">
+                <div class="box">
+                    <a href="games/runner.html" target="_blank"><img src="img/runner.png" alt="Sinppet of runner game"></a>
+                    <br>
+                    <a href="games/runner.html" target="_blank">Click here to try the runner game</a>
+                </div>
+                
+                <div class="box">
+                    <a href="games/math.html" target="_blank"><img src="img/math.png" alt="Snippet of math game"></a>
+                    <br>
+                    <a href="games/math.html" target="_blank">Click hete to try the Math Game</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h1>Contact</h1>
+            <div class="rectangle"></div>
+            <div class="flex">
+                <div class="box">
+                    <h2>Contact me at:</h2>
+                    <p>Send me an email</p>
+                    <a href="mailto:devviv2005@gmail.com">devviv2005@gmail.com</a>
+                    <br>
+                    <br>
+                    <p>Call or text me at:</p>
+                    <a href="tel:+501 6017134">+501 601-7134</a>
+                </div>
+
+                <div class="box">
+                    <h2>Drop by:</h2>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1526.6422872793846!2d-88.49424003094697!3d18.339296532677064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sbz!4v1746002168498!5m2!1sen!2sbz" width="300" height="200" style="border-radius:8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+
+        </section>   
+    </main>
+    <!-- Footer section -->
+    <footer class="flex">
+        <!-- Quick links to the website -->
         <div>
             <p>Quick Links Here</p>
+            <ul>
+                <li><a href="#about_me">About Me</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
 
         </div>
 
+        <!-- Social Media links -->
         <div>
-            <p>Social Media Here</p>
+            <p>Connect with me!</p>
+            <ul class="flex">
+                <li><a href="https://www.linkedin.com/in/devin-vivas" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
+                <li><a href="https://github.com/Devtheprogrammer-maker" target="_blank"><i class="fa-brands fa-github"></i></a></li>
+                
+            </ul>
         </div>
     </footer>
+
+    <!-- Copyright section -->
+    <section id="copyright">
+        <p>&copy; 2025 Devin.tech. All rights reserved.</p>
+    </section>
+    <script src="java/javascript.js"></script>
 </body>
 </html>

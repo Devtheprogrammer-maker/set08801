@@ -1,28 +1,18 @@
+<!-- Standard HTML heading -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title -->
     <title>Runner Game</title>
+    <!-- Stylesheets load -->
     <link rel="stylesheet" href="../style/runnerstyle.css">
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
-    <header>
-        <nav class = "nav_bar">
-            <ul>
-                <li><img src="" alt=""><a href="">Slogan</a></li>
-                <li><a href="#">About Me</a></li>
-                <li><a href="#">Hobbies</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Contact Me</a></li>
-                <img src="" alt="">
-            </ul>
-        </nav>
-    </header>
-
     <main>
         <!-- Score section for current score and highest score  -->
         <section id = "score">
@@ -68,7 +58,7 @@
                 <p><strong>Moblie/Tablet: </strong>Tap anywhere on the screen to jump.</p>
             </div>
 
-            
+            <!-- About game section -->
             <div>
                 <h1>About Game:</h1>
                 <p><strong>Developer: </strong>Devin Vivas</p>
@@ -79,22 +69,35 @@
         </section>
     </main>
 
-    <footer>
-        <div>
-            <img src="" alt="">
-            <p>Text Here</p>
-        </div>
-
+    <!-- Footer section -->
+    <footer class="flex">
+        <!-- Quick links to the website -->
         <div>
             <p>Quick Links Here</p>
+            <ul>
+                <li><a href="#about_me">About Me</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
 
         </div>
 
+        <!-- Social Media links -->
         <div>
-            <p>Social Media Here</p>
+            <p>Connect with me!</p>
+            <ul class="flex">
+                <li><a href="https://www.linkedin.com/in/devin-vivas" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
+                <li><a href="https://github.com/Devtheprogrammer-maker" target="_blank"><i class="fa-brands fa-github"></i></a></li>
+                
+            </ul>
         </div>
     </footer>
-    
+
+    <!-- Copyright section -->
+    <section id="copyright">
+        <p>&copy; 2025 Devin.tech. All rights reserved.</p>
+    </section>
 </body>
+<!-- Script loads -->
 <script src="../java/runnergame.js"></script>
 </html>

@@ -1,22 +1,303 @@
+/* Removes defaults */
 * {
     margin: 0;
     padding: 0;
 }
 
+
+/*Body format*/
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    background-color: #fff;
+    line-height: 1.6;
+}
+
+/* Style the main section heading */
+h1 { 
+    text-align: center;
+    padding-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 2.5rem; 
+    color: #2c3e50;
+}
+
+/* Style headings inside boxes */
+h2 { 
+    text-align: left; 
+    color: #2c3e50; 
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    padding-top: 0;
+}
+
+/* Styles paragraph tag inside boxes */
+p {
+    padding: 0;
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+/* Format for the line below */
+.rectangle {
+    width: 90px;
+    height: 3px;
+    background-color: #3498db;
+    margin: 0 auto 2.5rem auto;
+    border-radius: 4px;
+}
+
+
+/* Aligns items */
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 2rem; 
+}
+
+
+/* Styles the backgound of the items */
+.box {
+    width: 320px;
+    min-height: 250px; 
+    padding: 1.5rem; 
+    background-color: #ffffff;
+    box-shadow: 5px 10px 5px #888888;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    color: #333; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 4px solid #2c3e50;
+}
+
+
+/* On hovering it lifts the box and reduces the shadow */
+.box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+
+
+/* Style For Nav Bar */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: #2c3e50; /*2c4d7a 87CEEB*/
+    width: 100%;
+}
+  
+nav ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    list-style: none;
+    margin: 0 auto;
+    padding: 1rem 0.5rem;
+}
+
+nav a{
+    padding: 0px 25px;
+    color: black;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #c6c3c3;
+}
+
+nav li {
+    margin: 0.5rem 0; 
+}
+
+nav li:hover{
+    background-color: #3498db;
+    border-radius: 8px;
+}
+
+nav i{
+    color: #c6c3c3;
+    margin: 0 0.5rem;
+}
+
+
+/* Welcome section styling */
+#welcome{
+    height: 90vh;
+    background-color: #f4f7f6;
+}
+
+
+/* About me section styling */
+#about_me {
+    background-color: #eee;
+    padding: 3rem 1rem; 
+}
+
+/* Style the hobby list */
+.hobby_list {
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+}
+
+
+/* Styles the list */
+.hobby_list li {
+    margin-bottom: 0.8rem; 
+    display: flex; 
+    align-items: center; 
+    font-size: 1.05rem;
+}
+
+
+/* Styles image form font awsome */
+.hobby_list li i {
+    color: #3498db; 
+    margin-right: 0.8rem; 
+    width: 20px; 
+    text-align: center;
+}
+
+
+/* Styles the image */
+.round_img img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 1.5rem; 
+    border: 5px solid #fff; 
+    box-shadow: 5px 10px 5px #888888;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;    
+}
+
+/* On hovering it lifts the img and reduces the shadow */
+.round_img img:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+
+#projects {
+    background-color: #f4f7f6;
+}
+
+#projects img{
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: 0.25rem; 
+    border-radius: 8px;
+}
+
+#projects a{
+    display: flex; 
+    justify-content: center;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+#projects a:hover{
+    color: #3498db;
+}
+
+
+#contact {
+    padding: 1.5rem;
+    background-color: #eee;
+}
+
+#contact p{
+    margin: 0 0 0.15rem 0;
+    font-weight: bold;
+}
+
+#contact a{
+    /* text-decoration: none; */
+    color: #333;
+}
+
+
+/* Footer */
+footer {
+    background-color: #2c3e50;
+    color: #c6c3c3;
+    width: 100%;
+    padding: 2rem 0;
+    margin-top: auto;
+    text-align: center;
+}
+
+footer ul{
+    list-style: none;
+}
+
+footer li {
+    padding: 5px 0;
+}
+
+footer a:hover{
+    color: #3498db;
+}
+
+footer a{
+    text-decoration: none;
+    color: #c6c3c3;
+}
+
+#copyright {
+    width: 100%;
+    background-color: #eee;
+    text-align: right;
+    
+}
+
+#copyright p{
+    margin: 0;
+    padding: 5px 0;
+}
+
+/* ------------------------------------------------------------------------------------------------ */
+/* Styles button */
+button {
+    padding: 0.6rem 1.5rem;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Adds hover effect to button */
+button:hover{
+    background-color: #555;
+}
+
 /*Score background section styling*/
 #score {
     display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 600px;
     gap: 2rem;
-    margin-bottom: 2rem;
-    background-color: #fff;
-    padding: 1.5rem 2rem;
+    margin-bottom: 1.5rem;
+    background-color: #eee;
+    padding: 1rem;
     border-radius: 8px;
     box-shadow: 5px 10px 18px #888888;
+    text-align: center;
 }
 
-/*Centers text*/
+/* Adds space */
 #score div{
-    text-align: center;
+    margin-bottom: 0.5rem;
 }
 
 /*Formats h1 tag*/
@@ -28,23 +309,28 @@
 
 /*Formats p tag*/
 #score p{
-    color: black; 
+    color: #2c4d7a; 
     font-weight: bold;
 }
 
-
-
 /*Rules background format*/
 #rules {
-    margin-bottom: 2rem;
-    background-color: #fff;
-    padding: 1.5rem 2rem;
-    border-radius: 8px;
-    box-shadow: 5px 10px 18px #888888;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    gap: 1.5rem;
+    width: 100%;
+    max-width: 1000px;
+    gap: 1rem;
+}
+
+/*Formats div tag*/
+#rules div{
+    padding: 1.5rem;
+    flex: 1;
+    background-color: #eee;
+    box-shadow: 5px 10px 18px #888888;
+    border-radius: 8px;
+    min-height: 200px;
 }
 
 /*Formats p tag*/
@@ -59,62 +345,10 @@
     margin-bottom: 1rem;
 }
 
-/*Formats div tag*/
-#rules div{
-    padding: 1.5rem 2rem;
-    flex: 1;
-    background-color: #f4f7f6;
-    box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
-    border-radius: 8px;
-    min-height: 200px;
-}
 
 /*Formats stong tag*/
 #rules strong{
     color: #2c4d7a;
     /*Possible other color = 007bff*/
 }
-
-
-
-
-
-/* Style For Nav Bar */
-.nav_bar {
-    position: sticky;
-    background-color: #87CEEB; /*2c4d7a */
-    width: 100%;
-}
-
-.nav_bar ul{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
-    list-style-type: none;
-    padding: 15px 25px;
-}
-
-.nav_bar a{
-    padding: 0px 25px;
-    color: black;
-    text-transform: uppercase;
-
-    text-decoration: none;
-
-}
-
-.primary{
-    background-color: #f5f6f8;
-}
-
-/* Footer */
-footer {
-    background-color: #2c4d7a;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-}
+/* --------------------------------------------------------------------------------------- */
