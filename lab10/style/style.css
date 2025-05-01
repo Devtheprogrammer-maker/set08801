@@ -5,7 +5,7 @@
 }
 
 
-/*Body format*/
+/* Body format */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #333;
@@ -38,7 +38,7 @@ p {
     line-height: 1.7;
 }
 
-/* Format for the line below */
+/* Format for the line below headings */
 .rectangle {
     width: 90px;
     height: 3px;
@@ -46,7 +46,6 @@ p {
     margin: 0 auto 2.5rem auto;
     border-radius: 4px;
 }
-
 
 /* Aligns items */
 .flex {
@@ -57,8 +56,7 @@ p {
     gap: 2rem; 
 }
 
-
-/* Styles the backgound of the items */
+/* Styles the 'box' of the items */
 .box {
     width: 320px;
     min-height: 250px; 
@@ -72,7 +70,6 @@ p {
     border-top: 4px solid #2c3e50;
 }
 
-
 /* On hovering it lifts the box and reduces the shadow */
 .box:hover {
     transform: translateY(-8px);
@@ -80,8 +77,7 @@ p {
 }
 
 
-
-/* Style For Nav Bar */
+/* Makes the nav bar stay at the top of the page */
 header {
     position: sticky;
     top: 0;
@@ -90,6 +86,7 @@ header {
     width: 100%;
 }
   
+/* Unordered list styling */
 nav ul{
     display: flex;
     flex-direction: row;
@@ -102,6 +99,7 @@ nav ul{
     padding: 1rem 0.5rem;
 }
 
+/* styles the nav a tags */
 nav a{
     padding: 0px 25px;
     color: black;
@@ -110,29 +108,125 @@ nav a{
     color: #c6c3c3;
 }
 
+/* Styles the li lag in the nav section */
 nav li {
     margin: 0.5rem 0; 
 }
 
+/* Hovers styling for li */
 nav li:hover{
     background-color: #3498db;
     border-radius: 8px;
 }
 
+/* Styles the icons */
 nav i{
     color: #c6c3c3;
     margin: 0 0.5rem;
 }
 
 
-/* Welcome section styling */
+/* Welcome section styling mainly the background */
 #welcome{
-    height: 90vh;
-    background-color: #f4f7f6;
+    height: 90dvh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-image: url(../img/home.png);
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    color: #333;
+}
+
+/* Centers welcome contents */
+#center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Animates the h1 to fade in and out */
+#welcome h1 {
+    animation: fade 6s ease-out 2;
+}
+
+/* Makes h1 fade in and out */
+@keyframes fade {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Styles the p of the welcome section */
+#welcome p{
+    padding: 0;
+    border-right: 3px solid #333;
+    display: inline-block;
+    animation: blink_line 0.5s step-end infinite;
+}
+
+/* Make the border 'blink' */
+@keyframes blink_line {
+    50% {border-color: transparent;}
+
+}
+
+/* Make the a tag look like a button */
+#welcome a{
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.6rem 1.5rem;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Lifts the a tag when hovered */
+#welcome a:hover {
+    background-color: #555;
+    transform: translateY(-3px);
+}
+
+/* Animates the icon */
+#welcome i{
+    margin: 2rem 0;
+    font-size: 1.5rem;
+    animation: down 3s ease-in-out infinite;
+}
+
+/* Makes the icon go down and up */
+@keyframes down {
+    0%{
+        transform: translateY(0); 
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(100px); 
+        opacity: 0.7; 
+    }
+    100% {
+        transform: translateY(0); 
+        opacity: 1;
+    }
 }
 
 
-/* About me section styling */
+/* About me backgorund and padding styling */
 #about_me {
     background-color: #eee;
     padding: 3rem 1rem; 
@@ -145,8 +239,7 @@ nav i{
     margin: 0;
 }
 
-
-/* Styles the list */
+/* positions the list */
 .hobby_list li {
     margin-bottom: 0.8rem; 
     display: flex; 
@@ -154,15 +247,13 @@ nav i{
     font-size: 1.05rem;
 }
 
-
-/* Styles image form font awsome */
+/* Styles the icon form font awsome */
 .hobby_list li i {
     color: #3498db; 
     margin-right: 0.8rem; 
     width: 20px; 
     text-align: center;
 }
-
 
 /* Styles the image */
 .round_img img {
@@ -184,10 +275,12 @@ nav i{
 }
 
 
+/* Sets project section background */
 #projects {
     background-color: #f4f7f6;
 }
 
+/* Styles the images */
 #projects img{
     width: 300px;
     height: 300px;
@@ -196,36 +289,41 @@ nav i{
     border-radius: 8px;
 }
 
+/* styles the a tag and centers it */
 #projects a{
     display: flex; 
     justify-content: center;
     text-decoration: none;
     color: #333;
     font-weight: bold;
+   
 }
 
+/* Changes the text color */
 #projects a:hover{
     color: #3498db;
 }
 
 
+/* Styles the contact section */
 #contact {
     padding: 1.5rem;
     background-color: #eee;
 }
 
+/* Styles the p tag */
 #contact p{
     margin: 0 0 0.15rem 0;
     font-weight: bold;
 }
 
+/* Changes a color */
 #contact a{
-    /* text-decoration: none; */
     color: #333;
 }
 
 
-/* Footer */
+/* Styles footer */
 footer {
     background-color: #2c3e50;
     color: #c6c3c3;
@@ -235,23 +333,29 @@ footer {
     text-align: center;
 }
 
+/* Styles the ul */
 footer ul{
     list-style: none;
 }
 
+/* Adds padding to li */
 footer li {
     padding: 5px 0;
 }
 
+/* changes color */
 footer a:hover{
     color: #3498db;
 }
 
+/* styles a tag */
 footer a{
     text-decoration: none;
     color: #c6c3c3;
 }
 
+
+/* Styles the copyright section */
 #copyright {
     width: 100%;
     background-color: #eee;
@@ -259,12 +363,15 @@ footer a{
     
 }
 
+/* Styles the p */
 #copyright p{
     margin: 0;
     padding: 5px 0;
 }
 
-/* ------------------------------------------------------------------------------------------------ */
+
+
+/* This is for the games */
 /* Styles button */
 button {
     padding: 0.6rem 1.5rem;
@@ -273,12 +380,15 @@ button {
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 /* Adds hover effect to button */
 button:hover{
     background-color: #555;
+    transform: translateY(-3px);
 }
+
 
 /*Score background section styling*/
 #score {
@@ -312,6 +422,7 @@ button:hover{
     color: #2c4d7a; 
     font-weight: bold;
 }
+
 
 /*Rules background format*/
 #rules {
@@ -351,4 +462,3 @@ button:hover{
     color: #2c4d7a;
     /*Possible other color = 007bff*/
 }
-/* --------------------------------------------------------------------------------------- */
