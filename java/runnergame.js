@@ -375,3 +375,4 @@ function mute(){
         mute_icon.classList.add('fa-volume-xmark');
     }
 }
+

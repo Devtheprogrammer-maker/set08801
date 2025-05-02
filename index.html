@@ -1,13 +1,152 @@
 <!DOCTYPE html>
-<html lang="eng">
-    <head>
-        <title>Home</title>
-    </head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title Name -->
+    <title>Home</title>
+    <!-- Loads stylesheets -->
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <!--  Navigation Section  -->
+    <header>
+        <nav>
+            <ul>
+                <!-- Hyperlinks to differnt sections -->
+                <li><a href="#"><i class="fa-solid fa-code"></i>Devin.tech</a></li>
+                <li><a href="#about_me"><i class="fa-solid fa-circle-info"></i></i>About Me</a></li>
+                <li><a href="#projects"><i class="fa-solid fa-gamepad"></i>Projects</a></li>
+                <li><a href="#contact"><i class="fa-solid fa-phone"></i>Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <body>
-        <h1>Click The links below to access the labs: </h1>
-        <a href="lab2/lab2.html"><button>Lab 2</button></a>
+    <main>
+        <!-- Welcome section -->
+        <section id="welcome">
+            <div id = "center">
+                <h1>Hi, I'm Devin Vivas</h1>
+                <!-- Typewriter effect -->
+                <p id="text"></p>
+                <!-- 'Button' -->
+                <a href="#projects">Discover More</a>
+                <!-- Going down arrow -->
+                <div><i class="fa-solid fa-chevron-down"></i></div>
+            </div>
+        </section>
+
+        <!-- About me section -->
+        <section id="about_me">
+            <h1>About Me</h1>
+            <!-- 'Line' -->
+            <div class="rectangle"></div>
+            <div class="flex">
+                <!-- About me/Facts -->
+                <div class="box"> 
+                    <h2>Hello!</h2> 
+                    <p >Over a year ago, I graduated as the salutatorian of the Class of 2024 at Corozal Junior College. I am currently pursuing a Computing degree at Edinburgh Napier University. Beyond academics, I aspire to one day obtain a pilot's license and possibly work for a commercial airline. I am 19 years old and hope to eventually earn a PhD in cybersecurity.</p>
+                </div>
         
-    </body>
+                <!-- The image of me -->
+                <div class="round_img">
+                    <img src="img/mypic.png" alt="My photo" loading="lazy">
+                </div>
+        
+                <!-- Various hobbies -->
+                <div class="box"> 
+                    <h2>Some of my hobbies:</h2> 
+                    <ul class="hobby_list">      
+                        <li><i class="fa-solid fa-person-biking"></i> Cycling</li>
+                        <li><i class="fa-solid fa-seedling"></i> Gardening</li>
+                        <li><i class="fa-solid fa-person-swimming"></i> Swimming</li>
+                        <li><i class="fa-solid fa-dumbbell"></i> Recently Power lifting</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
+        <!-- Projects section -->
+        <section id="projects">
+            <h1>Check Out My Recent Projects!</h1>
+            <!-- line -->
+            <div class="rectangle"></div>
+            <div class="flex">
+                <!-- Link to runner game -->
+                <div class="box">
+                    <a href="games/runner.html" target="_blank"><img src="img/runner.png" alt="Sinppet of runner game" loading="lazy"></a>
+                    <br>
+                    <a href="games/runner.html" target="_blank">Click here to try the runner game</a>
+                </div>
+                
+                <!-- Link to the math game -->
+                <div class="box">
+                    <a href="games/math.html" target="_blank"><img src="img/math.png" alt="Snippet of math game" loading="lazy"></a>
+                    <br>
+                    <a href="games/math.html" target="_blank">Click hete to try the Math Game</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact section -->
+        <section id="contact">
+            <h1>Contact</h1>
+            <!-- line -->
+            <div class="rectangle"></div>
+            <div class="flex">
+                <!-- Contact info -->
+                <div class="box">
+                    <h2>Contact me at:</h2>
+                    <p>Send me an email</p>
+                    <a href="mailto:devviv2005@gmail.com">devviv2005@gmail.com</a>
+                    <br>
+                    <br>
+                    <p>Call or text me at:</p>
+                    <a href="tel:+501 6017134">+501 601-7134</a>
+                </div>
+
+                <!-- Location -->
+                <div class="box">
+                    <h2>Drop by:</h2>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1526.6422872793846!2d-88.49424003094697!3d18.339296532677064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sbz!4v1746002168498!5m2!1sen!2sbz" width="300" height="200" style="border-radius:8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>   
+    </main>
+
+    <!-- Footer section -->
+    <footer class="flex">
+        <!-- Quick links to the website -->
+        <div>
+            <p>Quick Links Here</p>
+            <!-- Links to the sections of the page -->
+            <ul>
+                <li><a href="#about_me">About Me</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+        </div>
+
+        <!-- Social Media links -->
+        <div>
+            <p>Connect with me!</p>
+            <!-- Links to social media -->
+            <ul class="flex">
+                <li><a href="https://www.linkedin.com/in/devin-vivas" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
+                <li><a href="https://github.com/Devtheprogrammer-maker" target="_blank"><i class="fa-brands fa-github"></i></a></li>
+                
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Copyright section -->
+    <section id="copyright">
+        <p>&copy; 2025 Devin.tech. All rights reserved.</p>
+    </section>
+
+    <!-- Loads javascript -->
+    <script src="java/javascript.js"></script>
+</body>
 </html>

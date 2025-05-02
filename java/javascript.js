@@ -49,3 +49,4 @@ function typewriter() {
 
 //Initailly starts the function
 typewriter();
+
