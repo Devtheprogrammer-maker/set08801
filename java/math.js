@@ -8,7 +8,7 @@ const operations = ['+', '-', '*', '/'];
 let hp = document.getElementById('my_health');
 let helicopter_interval = null; 
 let monster_interval = null;
-let monster_health = 2; //CHANGE THIS TO 5 AFTER RECORDING
+let monster_health = 5; 
 let is_gameover = false; 
 
 
@@ -716,7 +716,7 @@ function play_again(){
     // Rests
     score = 0;
     health = 5;
-    monster_health = 2; //CHANGE THIS TO 5 AFTER RECORDING
+    monster_health = 5; 
     time = 10;
     document.getElementById('score').getElementsByTagName('p')[0].innerText = score;
     hp.innerText = health;
