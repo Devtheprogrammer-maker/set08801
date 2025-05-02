@@ -151,7 +151,7 @@ nav i{
 
 /* Animates the h1 to fade in and out */
 #welcome h1 {
-    animation: fade 6s ease-out 2;
+    animation: fade 6s ease-out infinite;
 }
 
 /* Makes h1 fade in and out */

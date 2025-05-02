@@ -1,6 +1,6 @@
 //Variables 
 let para = document.getElementById('text');
-let text = 'Aspiring Developer & Tech Enthusiast';
+let text = 'Aspiring Developer and Tech Enthusiast';
 let type_seed = 80;      
 let delete_speed = 50;   
 let pause_duration = 1500;
